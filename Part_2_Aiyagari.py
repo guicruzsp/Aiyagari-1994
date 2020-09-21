@@ -258,25 +258,3 @@ plt.ylabel('Policy for Consumption')
 plt.title("Policy for Consumption")
 plt.legend()
 plt.show()
-
-
-# Distribution of wealth at equilibrium
-asset_dist = ga*lambda_var
-asset_dist = np.sum(asset_dist,axis = 1)
-plt.plot(a,asset_dist, label = "Am")
-plt.xlabel('Assets')
-plt.ylabel('Density')
-plt.show()
-
-#obtain wealth gini
-gini_wealth = qe.gini_coefficient(asset_dist)
-
-#obtain income gini
-tot_income = (gc + ga)*lambda_var
-tot_income = np.sum(tot_income,axis = 1)
-plt.plot(a,tot_income, label = "Income")
-plt.xlabel('Assets')
-plt.ylabel('Density')
-plt.show()
-
-gini_income = qe.gini_coefficient(tot_income)
