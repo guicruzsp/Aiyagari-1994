@@ -5,13 +5,6 @@ Created on Wed Sep 16 17:41:52 2020
 @author: gui_c
 """
 
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Sep 14 20:26:21 2020
-
-@author: gui_c
-"""
-
 import numpy as np
 from numba import jit
 import matplotlib.pyplot as plt
@@ -21,7 +14,7 @@ import quantecon as qe
 import math
 from copy import deepcopy
 
-# Generating the times series
+# Generating the times series for labor according to equation (9)
 sigma = np.array((0.2,0.4))
 rho = np.array((0, 0.3, 0.6, 0.9))
 epsilon = np.random.normal(0, 1, 500)
@@ -49,6 +42,7 @@ for k in range(2):
 
 # Now that we have the series, we apply the Tauchen algorithm
 # Approx with 7 points
+# Here we can obtain the values from table 1
 
 m = 3
 n = 7
@@ -89,15 +83,15 @@ for p in range(4,8):
 
 
 
-# Parameters for the table
+# Parameters for table 2
 sigma = np.array((0.2,0.4))
 rho = np.array((0, 0.3, 0.6, 0.9))
-gamma = 3
-k = 1
-j = 2
+gamma = 3 
+k = 1 # Here we choose sigma
+j = 2 # Here we choose rho
 m = 3
 n = 7
-tauchen_approx = qe.markov.approximation.tauchen(rho[j], math.sqrt(sigma[k]**2*(1-rho[j]**2)), m =m,n=n)
+tauchen_approx = qe.markov.approximation.tauchen(rho[j], math.sqrt(sigma[k]**2*(1-rho[j]**2)), m =m,n=n) # Generate a Tauchen approx. with the chosen parameters
 
 
 beta = 0.96
